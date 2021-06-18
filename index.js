@@ -4,7 +4,7 @@ const Downloader = require("nodejs-file-downloader");
   //Wrapping the code with an async function, just for the sake of example.
 
   const downloader = new Downloader({
-    url: "https://www107.zippyshare.com/d/i8vUZttO/30278/JP-STB3.0.zip.001", //If the file name already exists, a new file with the name 200MB1.zip is created.
+    url: "https://www107.zippyshare.com/d/i8vUZttO/2242/JP-STB3.0.zip.001", //If the file name already exists, a new file with the name 200MB1.zip is created.
     directory: "./downloadsssss", //This folder will be created, if it doesn't exist.
   });
   try {
