@@ -2,6 +2,7 @@
 const Axios = require("axios");
 const stream = require("stream");
 const fs = require("fs");
+const unzipper = require("unzipper");
 // import * as stream from "stream";
 // import * as fs from "fs";
 
@@ -31,6 +32,9 @@ async function downloadFile(fileUrl, outputLocationPath) {
       });
       writer.on("close", () => {
         if (!error) {
+          fs.createReadStream(outputLocationPath).pipe(
+            unzipper.Extract({ path: "output/path" })
+          );
           resolve(true);
         }
         //no need to call the reject here, as it will have been called in the
@@ -42,7 +46,7 @@ async function downloadFile(fileUrl, outputLocationPath) {
 
 downloadFile(
   "https://www107.zippyshare.com/d/i8vUZttO/22601/JP-STB3.0.zip.001",
-  "./test1"
+  "./test2"
 );
 
 // async function getUser() {
