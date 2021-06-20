@@ -1,4 +1,4 @@
 const unzipper = require("unzipper");
 const fs = require("fs");
 
-fs.createReadStream("./test3").pipe(unzipper.Extract({ path: "output/path2" }));
+fs.createReadStream("./test4").pipe(unzipper.Extract({ path: "output/path2" }));
