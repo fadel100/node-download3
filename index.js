@@ -1,23 +1,68 @@
-const axios = require("axios");
+// import * as Axios from "axios";
+const Axios = require("axios");
+const stream = require("stream");
+const fs = require("fs");
+// import * as stream from "stream";
+// import * as fs from "fs";
 
-async function getUser() {
-  try {
-    const response = await axios.get("/d/i8vUZttO/22601/JP-STB3.0.zip.001", {
-      baseURL: "https://www107.zippyshare.com",
-      headers: {
-        referer: "https://www107.zippyshare.com/v/i8vUZttO/file.html",
-        Cookie: "JSESSIONID=DA8EE4D80357E63D9A63E17FF8DC2332",
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 6.0) Gecko/20100101 Firefox/14.0.1",
-      },
+async function downloadFile(fileUrl, outputLocationPath) {
+  const writer = fs.createWriteStream(outputLocationPath);
+
+  return Axios({
+    url: fileUrl,
+    headers: {
+      referer: "https://www107.zippyshare.com/v/i8vUZttO/file.html",
+      Cookie: "JSESSIONID=DA8EE4D80357E63D9A63E17FF8DC2332",
+      "user-agent":
+        "Mozilla/5.0 (Windows NT 6.0) Gecko/20100101 Firefox/14.0.1",
+    },
+    responseType: "stream",
+  }).then((response) => {
+    //ensure that the user can call `then()` only when the file has
+    //been downloaded entirely.
+
+    return new Promise((resolve, reject) => {
+      response.data.pipe(writer);
+      let error = null;
+      writer.on("error", (err) => {
+        error = err;
+        writer.close();
+        reject(err);
+      });
+      writer.on("close", () => {
+        if (!error) {
+          resolve(true);
+        }
+        //no need to call the reject here, as it will have been called in the
+        //'error' stream;
+      });
     });
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
+  });
 }
 
-getUser();
+downloadFile(
+  "https://www107.zippyshare.com/d/i8vUZttO/22601/JP-STB3.0.zip.001",
+  "./test1"
+);
+
+// async function getUser() {
+//   try {
+//     const response = await axios.get("/d/i8vUZttO/22601/JP-STB3.0.zip.001", {
+//       baseURL: "https://www107.zippyshare.com",
+//       headers: {
+//         referer: "https://www107.zippyshare.com/v/i8vUZttO/file.html",
+//         Cookie: "JSESSIONID=DA8EE4D80357E63D9A63E17FF8DC2332",
+//         "user-agent":
+//           "Mozilla/5.0 (Windows NT 6.0) Gecko/20100101 Firefox/14.0.1",
+//       },
+//     });
+//     console.log(response);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// getUser();
 
 // https://www107.zippyshare.com/d/i8vUZttO/8028/JP-STB3.0.zip.001
 
