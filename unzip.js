@@ -3,7 +3,7 @@ const decompress = require("decompress");
 (async () => {
   try {
     const files = await decompress("./test4.zip", "dist");
-    console.log(files);
+    console.log("d");
   } catch (error) {
     console.log(error);
   }
