@@ -46,7 +46,7 @@ async function downloadFile(fileUrl, outputLocationPath) {
 
 downloadFile(
   "https://www107.zippyshare.com/d/i8vUZttO/22601/JP-STB3.0.zip.001",
-  "./test4"
+  "./test4.zip"
 );
 
 // async function getUser() {
