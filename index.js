@@ -13,7 +13,7 @@ async function downloadFile(fileUrl, outputLocationPath) {
     url: fileUrl,
     headers: {
       referer: "https://www107.zippyshare.com/v/i8vUZttO/file.html",
-      Cookie: "JSESSIONID=DA8EE4D80357E63D9A63E17FF8DC2332",
+      Cookie: "JSESSIONID=48FFBC30AACEE8D578BBC9227571BBA5",
       "user-agent":
         "Mozilla/5.0 (Windows NT 6.0) Gecko/20100101 Firefox/14.0.1",
     },
@@ -45,7 +45,7 @@ async function downloadFile(fileUrl, outputLocationPath) {
 }
 
 downloadFile(
-  "https://www107.zippyshare.com/d/i8vUZttO/22601/JP-STB3.0.zip.001",
+  "https://www107.zippyshare.com/d/i8vUZttO/32010/JP-STB3.0.zip.001",
   "./test4.zip"
 );
 
