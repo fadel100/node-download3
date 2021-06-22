@@ -12,7 +12,7 @@ async function downloadFile(fileUrl, outputLocationPath) {
   return Axios({
     url: fileUrl,
     headers: {
-      referer: "https://www5.zippyshare.com/v/d0lOW4GL/file.html",
+      referer: "https://www5.zippyshare.com/v/9LjLKcej/file.html",
       Cookie: "JSESSIONID=3AEAA16C093BFA2317794034E12E1AA5",
       "user-agent":
         "Mozilla/5.0 (Windows NT 6.0) Gecko/20100101 Firefox/14.0.1",
@@ -45,8 +45,8 @@ async function downloadFile(fileUrl, outputLocationPath) {
 }
 
 downloadFile(
-  "https://www5.zippyshare.com/d/d0lOW4GL/28395/JS-FBAS.zip.001",
-  "./JS-FBAS.zip.001"
+  "https://www5.zippyshare.com/d/9LjLKcej/49619/JS-FBAS.zip.002",
+  "./JS-FBAS.zip.002"
 );
 
 // async function getUser() {
