@@ -1,13 +1,25 @@
-const decompress = require("decompress");
+const extract = require("extract-zip");
 
-(async () => {
+async function main() {
   try {
-    const files = await decompress("./JP-STB3.0.zip.001", "dist");
-    console.log("d");
-  } catch (error) {
-    console.log(error);
+    await extract("./code.zip", { dir: "any" });
+    console.log("Extraction complete");
+  } catch (err) {
+    console.log(err);
   }
-})();
+}
+main();
+
+// const decompress = require("decompress");
+
+// (async () => {
+//   try {
+//     const files = await decompress("./JP-STB3.0.zip.001", "dist");
+//     console.log("d");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// })();
 
 // const unzipper = require("unzipper");
 // const fs = require("fs");
